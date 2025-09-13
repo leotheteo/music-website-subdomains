@@ -1,0 +1,9 @@
+Subdomain,IP,Cloudflare
+ap-southeast-1.api.acrcloud.com,3.114.102.100,false
+api.acrcloud.com,52.49.123.33,false
+docs-tracker.acrcloud.com,172.64.147.209,true
+docs-v2.acrcloud.com,172.64.147.209,true
+docs.acrcloud.com,172.64.147.209,true
+trial.acrcloud.com,188.165.46.132,false
+www.acrcloud.com,18.245.31.17,false
+wwwbeta.acrcloud.com,18.193.132.99,false
