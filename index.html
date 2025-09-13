@@ -2,34 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>csv browser with metadata panel</title>
+<title>csv browser</title>
 <style>
 body { font-family:sans-serif; background:#111; color:#eee; margin:0; padding:0; }
 .container { display:flex; height:100vh; }
 .sidebar {
-  width:300px;
-  overflow:hidden; /* hide scrollbar by default */
+  width:280px;
+  overflow:hidden; 
   background:#222;
   padding:10px;
   height:100%;
 }
-.sidebar:hover {
-  overflow:auto; /* show scrollbar on hover */
-}
-ul { list-style:none; padding-left:20px; margin:0; }
-li { cursor:pointer; padding:2px 5px; user-select:none; transition: background 0.2s; }
+.sidebar:hover { overflow:auto; }
+ul { list-style:none; padding-left:15px; margin:0; }
+li { cursor:pointer; padding:4px 6px; user-select:none; border-radius:4px; transition: background 0.2s; }
 li:hover { background:#333; }
-.folder::before { content:"📁 "; display:inline-block; width:20px; transition: transform 0.2s; }
+.folder::before { content:"📁 "; display:inline-block; width:20px; }
 .folder.open::before { content:"📂 "; }
 .file::before { content:"📄 "; display:inline-block; width:20px; }
 .subtree { overflow:hidden; transition: max-height 0.3s ease; max-height:0; }
 .subtree.open { max-height:1000px; }
-.content { flex:1; padding:10px; overflow:auto; position:relative; }
-table { border-collapse: collapse; width:100%; margin-top:10px; }
-th, td { border: 1px solid #555; padding:4px 8px; text-align:left; }
-th { background:#333; cursor:pointer; position:sticky; top:0; z-index:1; }
+.content { flex:1; padding:15px; overflow:auto; position:relative; background:#1a1a1a; border-left:1px solid #333; }
+table { border-collapse: collapse; width:100%; margin-top:10px; background:#111; }
+th, td { border: 1px solid #333; padding:6px 10px; text-align:left; }
+th { background:#222; cursor:pointer; position:sticky; top:0; z-index:1; }
 tr:nth-child(even) { background:#1a1a1a; }
-input#csvSearch, input#sidebarSearch { width: 100%; padding:5px; margin-bottom:10px; background:#222; color:#eee; border:1px solid #555; }
 .metadata-panel {
   position:absolute;
   top:10px;
@@ -42,6 +39,16 @@ input#csvSearch, input#sidebarSearch { width: 100%; padding:5px; margin-bottom:1
   color:#eee;
   max-width:200px;
   pointer-events:none;
+  font-size:0.9em;
+}
+input#sidebarSearch {
+  width:100%;
+  padding:5px 8px;
+  margin-bottom:10px;
+  background:#222;
+  color:#eee;
+  border:1px solid #555;
+  border-radius:4px;
 }
 </style>
 </head>
@@ -53,7 +60,7 @@ input#csvSearch, input#sidebarSearch { width: 100%; padding:5px; margin-bottom:1
     <div id="sidebarRoot"></div>
   </div>
   <div class="content" id="csv-content">
-    <p>select a file to preview</p>
+    <p style="margin-top:0;">select a file to preview</p>
     <div class="metadata-panel" id="metadataPanel" style="display:none;"></div>
   </div>
 </div>
@@ -144,8 +151,7 @@ document.getElementById('sidebarRoot').addEventListener('click', e => {
       Size: ${new Blob([text]).size} bytes
     `;
     // render table
-    let html = '<input type="text" id="csvSearch" placeholder="search table...">';
-    html += '<table id="csvTable"><thead><tr>';
+    let html = '<table id="csvTable"><thead><tr>';
     rows[0].split(',').forEach((h,i) => html+=`<th data-col="${i}">${h}</th>`);
     html += '</tr></thead><tbody>';
     rows.slice(1).forEach(row=>{
@@ -158,7 +164,6 @@ document.getElementById('sidebarRoot').addEventListener('click', e => {
 
     const table = document.getElementById('csvTable');
     table.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>sortTable(table, th.dataset.col)));
-    document.getElementById('csvSearch').addEventListener('input', e => filterTable(table, e.target.value));
   }).catch(err=>{
     csvContent.innerHTML='<p style="color:red;">failed to load csv</p>';
     console.error(err);
@@ -178,15 +183,6 @@ function sortTable(table, colIndex) {
   rows.forEach(r=>table.appendChild(r));
   table.dataset.sortAsc=asc;
 }
-
-// filter table
-function filterTable(table, query) {
-  const rows = table.querySelectorAll('tr:nth-child(n+2)');
-  rows.forEach(r=>{
-    r.style.display = Array.from(r.children).some(td=>td.textContent.toLowerCase().includes(query.toLowerCase()))?'':'none';
-  });
-}
-
 initSidebar();
 </script>
 
