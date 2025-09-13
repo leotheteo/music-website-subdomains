@@ -1,0 +1,9 @@
+Subdomain,IP,Cloudflare
+blog.audiomack.com,99.86.4.65,false
+fm.audiomack.com,146.75.123.52,false
+ghost-guide.audiomack.com,18.245.46.78,false
+ghost.audiomack.com,18.66.122.68,false
+i.audiomack.com,146.75.123.52,false
+jenkins.aws.audiomack.com,52.0.220.41,false
+m.audiomack.com,18.172.112.114,false
+mtn.tc.audiomack.com,18.66.122.14,false

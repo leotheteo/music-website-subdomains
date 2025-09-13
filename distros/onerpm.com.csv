@@ -1,0 +1,17 @@
+Subdomain,IP,Cloudflare
+ap.onerpm.com,52.40.254.146,false
+app-r.onerpm.com,107.20.181.103,false
+classic.onerpm.com,143.204.98.4,false
+cubebackup.onerpm.com,107.21.243.58,false
+fbt.onerpm.com,3.171.214.66,false
+gitweb.onerpm.com,185.199.108.153,false
+img.email.onerpm.com,104.17.157.243,true
+img.fanmail.onerpm.com,104.17.158.243,true
+mailer.onerpm.com,34.235.31.41,false
+methodman.onerpm.com,18.209.168.93,false
+ps.onerpm.com,34.210.194.56,false
+r.email.onerpm.com,1.179.112.196,false
+r.fanmail.onerpm.com,1.179.112.197,false
+sl.onerpm.com,34.210.194.56,false
+soup.onerpm.com,99.86.4.22,false
+www.onerpm.com,3.171.214.33,false
