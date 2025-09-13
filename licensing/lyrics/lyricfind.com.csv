@@ -1,0 +1,10 @@
+Subdomain,IP,Cloudflare
+api.lyricfind.com,63.247.66.66,false
+auth.lyric-qa.lyricfind.com,143.204.194.11,false
+auth.lyrics.lyricfind.com,13.227.219.45,false
+blog.lyricfind.com,199.60.103.28,false
+ddex-generator.lyricfind.com,18.188.176.209,false
+gitlab.lyricfind.com,72.138.86.194,false
+lyrics.lyricfind.com,52.222.149.4,false
+salesforce.lyricfind.com,18.208.125.13,false
+www.lyricfind.com,198.185.159.144,false
