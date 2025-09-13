@@ -6,7 +6,16 @@
 <style>
 body { font-family:sans-serif; background:#111; color:#eee; margin:0; padding:0; }
 .container { display:flex; height:100vh; }
-.sidebar { width:300px; overflow:auto; background:#222; padding:10px; }
+.sidebar {
+  width:300px;
+  overflow:hidden; /* hide scrollbar by default */
+  background:#222;
+  padding:10px;
+  height:100%;
+}
+.sidebar:hover {
+  overflow:auto; /* show scrollbar on hover */
+}
 ul { list-style:none; padding-left:20px; margin:0; }
 li { cursor:pointer; padding:2px 5px; user-select:none; transition: background 0.2s; }
 li:hover { background:#333; }
